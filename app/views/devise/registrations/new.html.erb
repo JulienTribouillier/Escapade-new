@@ -1,0 +1,32 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="container">
+
+  <h1 class="display-4 text-center m-5">S'inscrire<small>pour administrer les nouvelles</small></h1>
+  <div class="mgl-small-form"><%= render "devise/shared/error_messages", resource: resource %></div>
+  <main class="mx-5 mb-5">
+    <div class="mgl-small-form">
+      <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="JFoXMrrh6N8GMYUDmDcjr/zBAXqfKvwZU1CBE671EZ96FhA5v7G/qQN1v/KFiT1jANNt9dtxhW5AezBsWGKjlQ==">
+        <div class="field">
+          <label class="form-label" for="user_email">Email <span class="mgl-form-info">*</span></label>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control" %>
+        </div>
+        <div class="field">
+          <label class="form-label" for="user_password">
+            Mot de passe <span class="mgl-form-info">*</span>
+            <small class="mgl-form-info mgl-line-break">6 characters minimum</small>
+          </label>
+          <%= f.password_field :password, autocomplete: "new-password", :class => "form-control" %>
+        </div>
+        <div class="field">
+          <label class="form-label" for="user_password_confirmation">Confirmation du mot de passe <span class="mgl-form-info">*</span></label>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control" %>
+        </div>
+        <div class="actions">
+          <input type="submit" name="commit" value="S'inscrire" data-disable-with="Sign up">
+        </div>
+      </form>
+      <p class="mt-2"><span class="mgl-form-info">*</span> Champs obligatoires</p>
+    </div>
+  </main>
+</div>
+<% end %>

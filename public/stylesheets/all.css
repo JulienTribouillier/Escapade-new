@@ -1,0 +1,319 @@
+/*
+------------------------------------------------------------------------------------
+HTML, BODY
+------------------------------------------------------------------------------------
+*/
+
+body {
+    margin: 0 !important;
+    padding: 0;
+    font-size: 1em;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+}
+
+/*
+------------------------------------------------------------------------------------
+H
+------------------------------------------------------------------------------------
+*/
+
+h1 > small {
+    display: block;
+    font-size: 0.5em;
+}
+
+
+/*
+------------------------------------------------------------------------------------
+A & BUTTON
+------------------------------------------------------------------------------------
+*/
+
+a {
+    display: inline-block;
+    padding: 0 0.2em;
+    color: #0d6efd;
+    transition: transform 0.15s ease-in-out !important;
+    transform-origin: center;
+    transform: scale(1);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border-radius: 0.25em;
+}
+
+a:hover,
+a:focus {
+    color: #ffffff !important;
+    background-color: #0d6efd;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+a:active {
+    color: #ffffff !important;
+    background-color: #0a58ca;
+    text-decoration: none;
+}
+
+a[aria-disabled="true"] {
+    pointer-events: none;
+}
+
+button {
+    border: none;
+}
+
+/* -----------------------------
+a > img
+*/
+
+a > img {
+    display: block;
+}
+
+/*
+------------------------------------------------------------------------------------
+NAV
+------------------------------------------------------------------------------------
+*/
+
+.mgl-main-nav-logo {
+    width: 4em;
+    height: 4em;
+}
+
+.nav-link:visited {
+    color: #0d6efd;
+}
+
+.nav-link[aria-disabled="true"] {
+    color: #666666;
+}
+
+/*
+------------------------------------------------------------------------------------
+THUMBNAILS
+------------------------------------------------------------------------------------
+*/
+
+.img-thumbnail {
+    text-decoration: none;
+}
+
+.mgl-thumbnail-sizer {
+    display: block;
+    width: 7.5em;
+    height: 7.5em;
+    overflow: hidden;
+}
+
+.mgl-thumbnail-sizer > img {
+    height: 100%;
+    left: -25%;
+    position: relative;
+}
+
+.mgl-thumbnail-sizer.mgl-more {
+    background-color: #0d6efd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mgl-thumbnail-sizer.mgl-more > span {
+    font-size: 2em;
+}
+
+/*
+------------------------------------------------------------------------------------
+GALERY
+------------------------------------------------------------------------------------
+*/
+
+.mgl-galery {
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -0.25em;
+    margin-right: -0.25em;
+}
+
+.mgl-galery > li {
+    margin: 0.25em !important;
+}
+
+/*
+------------------------------------------------------------------------------------
+OVERIDE TIMELINE
+------------------------------------------------------------------------------------
+*/
+
+.timeline .card {
+    width: 20em;
+}
+
+.timeline ul li .content p {
+    padding: initial;
+    background-color: transparent;
+    margin: 0.25em 0;
+    text-align: initial;
+    border-radius: none;
+}
+
+.card-body > * {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.card.bg-primary {
+    text-align: center;
+}
+
+.mgl-video-thumbnail {
+    position: relative;
+}
+
+.mgl-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4em;
+    height: 4em;
+    margin-top: -2em;
+    margin-left: -2em;
+    padding: 0.5em;
+    background-color: #3d8bfd;
+    border-radius: 50%;
+}
+
+.mgl-play > img {
+    width: 100%;
+}
+
+/*
+------------------------------------------------------------------------------------
+STEPS
+------------------------------------------------------------------------------------
+*/
+
+.mgl-steps-form {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+}
+
+@media (min-width: 1024px) {
+    .mgl-steps-form > li {
+        padding: 1em;
+        width: 25%;
+        text-align: center;
+    }
+
+    .mgl-steps-form__number {
+        margin: 0 auto 1em;
+    }
+
+    .mgl-steps-form > li:not(:last-child) > .mgl-steps-form__number:after {
+        border-bottom: solid 1px #3d8bfd;
+        height: 1px;
+        width: 100%;
+        top: 2.1em;
+    }
+}
+
+@media (max-width: 1023px) {
+    .mgl-steps-form > li {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .mgl-steps-form {
+        flex-direction: column;
+    }
+
+    .mgl-steps-form > li {
+        display: flex;
+        align-items: center;
+    }
+
+    .mgl-steps-form__number {
+        margin: 1em;
+    }
+
+    .mgl-steps-form > li:not(:last-child) > .mgl-steps-form__number:after {
+        border-left: solid 1px #3d8bfd;
+        height: 100%;
+        width: 1px;
+        left: 2.1em;
+    }
+}
+
+.mgl-steps-form > li {
+    box-sizing: border-box;
+    position: relative;
+}
+
+.mgl-steps-form__number {
+    display: block;
+    background-color: #3d8bfd;
+    padding: 0.5em;
+    border-radius: 50%;
+    width: 2.5em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+}
+
+.mgl-steps-form > li:not(:last-child) > .mgl-steps-form__number:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+}
+
+/*
+------------------------------------------------------------------------------------
+FORM
+------------------------------------------------------------------------------------
+*/
+
+@media (min-width: 1024px) {
+    .mgl-flip-column {
+        /* pour le poster */
+        flex-direction: row-reverse;
+    }
+}
+@media (max-width: 1023px) {
+    .mgl-flip-column > .col-6 {
+        /* pour le poster */
+        width: 100%;
+        margin-bottom: 2em;
+    }
+}
+
+
+@media (min-width: 1024px) {
+    .mgl-small-form {
+        /* pour le sign in et sign up */
+        max-width: 20em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.mgl-form-info {
+    color: #3d8bfd;
+}
+
+.mgl-line-break {
+    display: block;
+}
+
+.mgl-blue {
+    color: #0d6efd;
+}
+
+@media (min-width: 1024px) { .mgl-small-screens-only { display: none; } }
+@media (max-width: 1023px) { .mgl-big-screens-only { display: none; } }

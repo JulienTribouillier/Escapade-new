@@ -1,0 +1,77 @@
+<!--<div class="row justify-content-between">-->
+<!--  <div class="col-1">-->
+    <%#= link_to root_path do %>
+<!--      <button type="button" class="btn btn-primary">Accueil</button>-->
+    <%# end %>
+<!--  </div>-->
+
+<!--  <div class="col-2">-->
+
+    <%#= link_to new_post_path do %>
+<!--      <button type="button" class="btn btn-primary">Ajouter un post</button>-->
+    <%# end %>
+<!--  </div>-->
+
+<!--  <div class="col">-->
+    <%#= link_to admin_posts_path do %>
+<!--      <button type="button" class="btn btn-primary">Administration</button>-->
+    <%# end %>
+<!--  </div>-->
+
+  <%# if user_signed_in? %>
+<!--    <div class="col">-->
+      <%#= link_to destroy_user_session_path, method: :delete do %>
+<!--        <button type="button" class="btn btn-danger">Déconnexion</button>-->
+      <%# end %>
+<!--    </div>-->
+
+<!--    <p>-->
+      <%#= link_to edit_user_registration_path do %>
+<!--        Connecté comme : <%#= current_user.email %>-->
+      <%# end %>
+<!--    </p>-->
+
+  <%# else %>
+<!--    <div class="col">-->
+      <%#= link_to new_user_session_path do %>
+<!--        <button type="button" class="btn btn-primary">Connexion</button>-->
+      <%# end %>
+<!--    </div>-->
+
+<!--    <div class="col">-->
+      <%#= link_to new_user_registration_path do %>
+<!--        <button type="button" class="btn btn-info">Inscription</button>-->
+      <%# end %>
+<!--    </div>-->
+  <%# end %>
+<!--</div>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1"><%= image_tag 'frog.webp', :class=> "mgl-main-nav-logo"%></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav">
+        <li class="nav-item">
+          <%= link_to "Voir les nouvelles", root_path , :class => "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Poster une nouvelle", new_post_path , :class => "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Administrer les nouvelles", admin_posts_path , :class => "nav-link"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Se connecter", new_user_session_path , :class => "nav-link"%>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete , :class => "nav-link"%>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

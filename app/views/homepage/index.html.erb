@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="text-center m-5">
+    <h1 class="display-4">Les nouvelles de l'Escapade</h1>
+    <button class="btn btn-success" type="button" id="check" onclick="changeDisplay()">Changer de vue (verticale/horizontale)</button>
+    <div class="mgl-big-screens-only">
+      <span>Frise horizontale</span>
+      <div class="form-check form-switch" style="display: inline-block;">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Frise verticale</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="m-4">
+  <!--vue verticale-->
+  <div id="timeline-display-vertical" style="display:none">
+    <div class="timeline " data-vertical-start-position="right" data-vertical-trigger="150px">
+      <div class="timeline__wrap">
+        <div class="timeline__items">
+          <% @posts.each do |post| %>
+            <div class="timeline__item">
+              <div class="timeline__content">
+                <h3><%= post.title %></h3>
+                <p><%= post.content %></p>
+                <% if post.images.attached? %>
+                  <ul class="mgl-galery">
+                <% post.images.each do |img|%>
+                      <li><a class="img-thumbnail"><span class="mgl-thumbnail-sizer"><%= image_tag img %>
+                      </span></a></li>
+                <% end %>
+                <% end %>
+                </ul>
+                <h4><%= post.created_at.strftime("%d/%m/%Y") %></h4>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--vue horizontale-->
+  <div id="timeline-display-horizontal" style="display:block">
+    <div class="timeline" data-mode="horizontal" data-force-vertical-mode="800" visible-items="4">
+      <div class="timeline__wrap">
+        <div class="timeline__items">
+          <% @posts.each do |post| %>
+            <div class="timeline__item">
+              <div class="timeline__content">
+                <div class="card-body">
+                  <p><%= post.created_at.strftime("%d/%m/%Y") %></p>
+                  <h5><%= post.title %></h5>
+                  <p><%= post.content %></p>
+                  <% if post.images.attached? %>
+                    <ul class="mgl-galery">
+                      <% post.images.each do |img|%>
+                        <li>
+                          <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
+                              <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+                          <% end %>
+                        </li>
+                      <% end %>
+                  <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--script pour passer de la vue verticale à la vue horizontale-->
+<script>
+    let displayBoolean = true
+    function changeDisplay() {
+        displayBoolean = !displayBoolean
+        var displayVertical = document.getElementById("timeline-display-vertical");
+        var displayHorizontal = document.getElementById("timeline-display-horizontal");
+        if (displayBoolean === false){
+            displayVertical.style.display = "block";
+            displayHorizontal.style.display = "none";
+        } else {
+            displayVertical.style.display = "none";
+            displayHorizontal.style.display = "block";
+        }
+    }
+</script>
