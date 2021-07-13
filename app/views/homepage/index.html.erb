@@ -22,7 +22,11 @@
           <% @posts.each do |post| %>
             <div class="timeline__item">
               <div class="timeline__content">
-                <div class="card">
+                <%if post.important? %>
+                  <div class="card text-white bg-primary">
+                <%else %>
+                  <div class="card">
+                <% end %>
                   <p><% if post.images.attached? %>
                       <%= image_tag post.images.last, :class => "card-img-top", :style => "width: 320px"%>
                     <% end %>
@@ -58,7 +62,11 @@
           <% @posts.each do |post| %>
             <div class="timeline__item">
               <div class="timeline__content">
-                <div class="card">
+                <%if post.important? %>
+                  <div class="card text-white bg-primary">
+                    <%else %>
+                  <div class="card">
+                    <% end %>
                   <p><% if post.images.attached? %>
                       <%= image_tag post.images.last, :class => "card-img-top"%>
                     <% end %>

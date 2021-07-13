@@ -22,8 +22,13 @@
   </div>
 
   <div class="field">
-    <%= @post.status %>
+    <%= form.label "Status du contenu" %>
     <%= form.select(:status, options_for_select([['pending'], ['rejected'], ['validated']],@post.status)) %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Mettre en avant" %>
+    <%= form.check_box :important %>
   </div>
 
   <div class="actions">
