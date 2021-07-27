@@ -6,6 +6,16 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def index
+    @posts = Post.all
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:success] = "created"
+  end
+
   def create
     @post = Post.new(post_params)
 
