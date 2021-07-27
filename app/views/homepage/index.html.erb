@@ -13,13 +13,18 @@
   </div>
 </div>
 
+
 <div class="m-4" id="hide" style="opacity: 0.5;">
   <!--vue verticale-->
-  <div id="timeline-display-vertical" style="display:none">
+  <% if device == "tablet" || device == "mobile" %>
+  <div id="timeline-display-vertical" style="display:block">
+    <% else %>
+    <div id="timeline-display-vertical" style="display:none">
+      <% end %>
     <div class="timeline " data-vertical-start-position="right" data-vertical-trigger="150px">
       <div class="timeline__wrap">
         <div class="timeline__items">
-          <% @posts.each do |post| %>
+          <% @posts.order("created_at").reverse.each do |post| %>
             <div class="timeline__item">
               <div class="timeline__content">
                 <%if post.important? %>
@@ -55,7 +60,11 @@
     </div>
   </div>
   <!--vue horizontale-->
+  <% if device == "tablet" || device == "mobile" %>
+  <div id="timeline-display-horizontal" style="display:none">
+    <% else %>
   <div id="timeline-display-horizontal" style="display:block">
+    <% end %>
     <div class="timeline" data-mode="horizontal" data-force-vertical-mode="800" data-rtl-mode="true" >
       <div class="timeline__wrap">
         <div class="timeline__items">
