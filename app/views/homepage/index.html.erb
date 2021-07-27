@@ -13,39 +13,51 @@
   </div>
 </div>
 
+
 <div class="m-4" id="hide" style="opacity: 0.5;">
   <!--vue verticale-->
-  <div id="timeline-display-vertical" style="display:none">
+  <% if device == "tablet" || device == "mobile" %>
+  <div id="timeline-display-vertical" style="display:block">
+    <% else %>
+    <div id="timeline-display-vertical" style="display:none">
+      <% end %>
     <div class="timeline " data-vertical-start-position="right" data-vertical-trigger="150px">
       <div class="timeline__wrap">
         <div class="timeline__items">
-          <% @posts.each do |post| %>
+          <% @posts.order("created_at").reverse.each do |post| %>
             <div class="timeline__item">
               <div class="timeline__content">
+                <% if post.header.present? %>
+                <div class="card-header">
+                <%= post.header %>
+                </div>
+                  <% end %>
                 <%if post.important? %>
                   <div class="card text-white bg-primary">
                 <%else %>
                   <div class="card">
                 <% end %>
-                  <p><% if post.images.attached? %>
-                      <%= image_tag post.images.last, :class => "card-img-top", :style => "width: 320px"%>
-                    <% end %>
-                  </p>
-                  <p><%= post.created_at.strftime("%d/%m/%Y") %></p>
-                  <h5><%= post.title %></h5>
-                  <p><%= post.content %></p>
-                  <% if post.images.attached? && post.images.count > 1 %>
-                    <ul class="mgl-galery">
-                      <% post.images.each do |img|%>
-                        <li>
-                          <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
-                            <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
-                          <% end %>
-                        </li>
-                      <% end %>
+                <p><% if post.images.attached? %>
+                    <%= image_tag post.images.last, :class => "card-img-top", :style => "width: 320px"%>
                   <% end %>
-                  </ul>
-
+                </p>
+                <p><%= post.created_at.strftime("%d/%m/%Y") %></p>
+                <div class="card-title"><%= post.title %></div>
+                <p><%= post.content %></p>
+                <% if post.images.attached? && post.images.count > 1 %>
+                  <ul class="mgl-galery">
+                    <% post.images.each do |img|%>
+                      <li>
+                        <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
+                          <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+                        <% end %>
+                      </li>
+                    <% end %>
+                <% end %>
+                </ul>
+                <div>
+                  <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
+                </div>
                 </div>
               </div>
             </div>
@@ -55,13 +67,22 @@
     </div>
   </div>
   <!--vue horizontale-->
+  <% if device == "tablet" || device == "mobile" %>
+  <div id="timeline-display-horizontal" style="display:none">
+    <% else %>
   <div id="timeline-display-horizontal" style="display:block">
+    <% end %>
     <div class="timeline" data-mode="horizontal" data-force-vertical-mode="800" data-rtl-mode="true" >
       <div class="timeline__wrap">
         <div class="timeline__items">
           <% @posts.each do |post| %>
             <div class="timeline__item">
               <div class="timeline__content">
+                <% if post.header.present? %>
+                  <div class="card-header">
+                    <%= post.header %>
+                  </div>
+                <% end %>
                 <%if post.important? %>
                   <div class="card text-white bg-primary">
                     <%else %>
@@ -85,7 +106,9 @@
                       <% end %>
                   <% end %>
                   </ul>
-
+                <div>
+                  <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
+                </div>
                 </div>
               </div>
             </div>
@@ -95,6 +118,7 @@
     </div>
   </div>
 </div>
+
 
 <!--script pour passer de la vue verticale à la vue horizontale-->
 

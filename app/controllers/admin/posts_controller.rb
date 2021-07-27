@@ -36,6 +36,13 @@ module Admin
 
     # PATCH/PUT /posts/1 or /posts/1.json
     def update
+      post = Post.find(params[:id])
+      if params[:post][:image_ids]
+        params[:post][:image_ids].each do |image_id|
+          image = post.images.find(image_id)
+          image.purge
+        end
+      end
       respond_to do |format|
         if @post.update(post_params)
           format.html { redirect_to admin_post_path(@post), notice: 'Post was successfully updated.' }
@@ -53,6 +60,7 @@ module Admin
       end
     end
 
+
     private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -62,7 +70,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :status, :images, :important)
+      params.require(:post).permit(:title, :content, :status, :images, :important, :header)
     end
   end
 end

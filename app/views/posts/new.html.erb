@@ -24,17 +24,15 @@
         <form action="/posts" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="qv1959Jiq0mNCT72daxO+n1MSagjKO0hBsgzfA4jba67KsMPZXrrcp+OZ1A6a85TNlI+1zMyZJ+DX8gUjFFAxA==">
           <div class="field">
             <label class="form-label" for="post_title">Titre de la nouvelle <small class="mgl-form-info">- obligatoire</small></label>
-            <%= form.text_field :title, class: "form-control" %>
+            <%= form.text_field :title, class: "form-control", required: true %>
           </div>
           <div class="field">
             <label class="form-label" for="post_content">Texte de la nouvelle  <small class="mgl-form-info">- facultatif</small></label>
             <%= form.text_area :content, class: "form-control" %>
           </div>
           <div class="field">
-            <label class="form-label" for="post_title">Images de la nouvelle <small class="mgl-form-info">- facultatives, maximum 6</small></label>
-            <% 6.times do %>
+            <label class="form-label" for="post_images">Images de la nouvelle <small class="mgl-form-info">- facultatives, maximum 6</small></label>
               <%= form.file_field :images, multiple: true, class: "form-control" %>
-            <% end %>
           </div>
 
 <!-- à développer DEBUT -->
@@ -51,8 +49,9 @@
 
           <div class="field">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">J'accepte les conditions d'utilisations précisées ci-contre (sur petit écran : ci-après)</label>
+              <%= form.check_box :terms_of_service, required: true, :class => "form-check-input", :id => "flexCheckDefault" %>
+<!--              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">-->
+              <label class="form-check-label" for="flexCheckDefault">J'accepte les conditions d'utilisations précisées ci-contre (sur petit écran : ci-après)<small class="mgl-form-info"> - obligatoire</small></label>
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Poster la nouvelle</button>
