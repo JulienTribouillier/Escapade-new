@@ -1,0 +1,28 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <div class="d-flex justify-content-center">
+    <h2>
+      <%= @post.title %>
+    </h2>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <p>
+      <%= @post.content %>
+    </p>
+  </div>
+   <div class="d-flex justify-content-center">
+     <bold>Image(s):</bold>
+     <% @post.images.each do |img|%>
+       <li>
+         <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
+           <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+         <% end %>
+       </li>
+     <% end %>
+   </div>
+  <div class="d-flex justify-content-center" data-turbolinks="false">
+    <%= link_to 'Retour', root_path %>
+  </div>
+</div>

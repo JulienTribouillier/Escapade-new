@@ -1,33 +1,46 @@
-<p id="notice"><%= notice %></p>
+ <div class="container">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+    <div class="d-flex justify-content-center">
+      <h2>
+        <%= @post.title %>
+      </h2>
+    </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+    <div class="d-flex justify-content-center">
+      <p>
+        <%= @post.content %>
+      </p>
+    </div>
+    <div class="d-flex justify-content-center">
+      <bold>Image(s):</bold>
+      <% @post.images.each do |img|%>
+        <li>
+          <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
+            <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <p>
+        <strong>Mis en Avant? (carte sur fond bleu): </strong>
+        <% if @post.important === true%>
+          oui </p>
+        <% else %>
+          non </p>
+        <% end %>
+        </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @post.status %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <% @post.images.each do |img|%>
-  <li><a class="img-thumbnail"><span class="mgl-thumbnail-sizer"><%= image_tag img %></span></a></li>
-<% end %>
-
-<p>
-  <strong>Mis en Avant? (carte sur fond bleu): </strong>
-  <% if @post.important === true%>
-   oui </p>
-  <% else %>
-   non </p>
-  <% end %>
-</p>
-<%= link_to 'Edit', edit_admin_post_path(@post) %> |
-<%= link_to 'Back', admin_posts_path %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <p>
+        <strong>Status:</strong>
+        <%= @post.status %>
+      </p>
+    </div>
+    <div class="d-flex justify-content-center" data-turbolinks="false">
+      <%= link_to 'Edit', edit_admin_post_path(@post) %>
+      <%= link_to 'Retour', admin_posts_path %>
+    </div>
+  </div>
