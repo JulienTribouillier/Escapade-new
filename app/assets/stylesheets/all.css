@@ -226,7 +226,6 @@ OVERIDE TIMELINE
 
 .timeline__content p.card-date {
     background-color: #2e7475;
-    display: block;
     padding: 0.125em 0.5em;
     color: #fff;
     border-radius: 1em;
@@ -234,6 +233,7 @@ OVERIDE TIMELINE
     top: 0;
     left: 1em;
     margin: -0.75em 0 0 0;
+
 }
 
 .mgl-video-thumbnail {
