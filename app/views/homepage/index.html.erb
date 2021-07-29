@@ -1,6 +1,9 @@
 <div class="container">
   <div class="text-center m-5">
-    <h1 class="display-4">Les nouvelles de l'Escapade</h1>
+    <h1 class="display-4">
+      <%= image_tag 'escapade_des-nouvelles.png', :alt => 'Des nouvelles de' %>
+      <%= image_tag 'escapade_lEscapade.png', :alt => 'l\'escapade' %>
+    </h1>
     <% if device == "desktop" %>
       <div class="mgl-big-screens-only">
         <span>Frise horizontale</span>
@@ -41,20 +44,22 @@
                     <%= image_tag post.images.last, :class => "card-img-top", :style => "width: 320px"%>
                   <% end %>
                 </p>
-                <p><%= post.created_at.strftime("%d/%m/%Y") %></p>
-                <div class="card-title"><%= post.title %></div>
-                <p><%= post.content %></p>
-                <% if post.images.attached? && post.images.count > 1 %>
-                  <ul class="mgl-galery">
-                    <% post.images.each do |img|%>
-                      <li>
-                        <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
-                          <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
-                        <% end %>
-                      </li>
-                    <% end %>
-                <% end %>
-                </ul>
+                <div class="card-body">
+                  <p class="card-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
+                  <div class="card-title"><%= post.title %></div>
+                  <p><%= post.content %></p>
+                  <% if post.images.attached? && post.images.count > 1 %>
+                    <ul class="mgl-galery">
+                      <% post.images.each do |img|%>
+                        <li>
+                          <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
+                            <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+                          <% end %>
+                        </li>
+                      <% end %>
+                  <% end %>
+                  </ul>
+                </div>
                 <div>
                   <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
                 </div>
@@ -92,20 +97,22 @@
                       <%= image_tag post.images.last, :class => "card-img-top"%>
                     <% end %>
                   </p>
-                  <p><%= post.created_at.strftime("%d/%m/%Y") %></p>
-                  <h5><%= post.title %></h5>
-                  <p><%= truncate(post.content, length: 120, escape: false ) %></p>
-                  <% if post.images.attached? && post.images.count > 1 %>
-                    <ul class="mgl-galery">
-                      <% post.images.each do |img|%>
-                        <li>
-                          <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
-                            <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
-                          <% end %>
-                        </li>
-                      <% end %>
-                  <% end %>
-                  </ul>
+                  <div class="card-body">
+                    <p class="card-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
+                    <h5><%= post.title %></h5>
+                    <p><%= truncate(post.content, length: 120, escape: false ) %></p>
+                    <% if post.images.attached? && post.images.count > 1 %>
+                      <ul class="mgl-galery">
+                        <% post.images.each do |img|%>
+                          <li>
+                            <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
+                              <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+                            <% end %>
+                          </li>
+                        <% end %>
+                    <% end %>
+                    </ul>
+                  </div>
                 <div>
                   <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
                 </div>
