@@ -13,7 +13,7 @@ body {
 
 
 body, p, ol, ul, td {
-    font-family: serif !important;
+    font-family: sans-serif !important;
     font-size: 1em !important;
 }
 
@@ -82,16 +82,6 @@ a > img {
 
 /*
 ------------------------------------------------------------------------------------
-LAYOUT
-------------------------------------------------------------------------------------
-*/
-
-.container.small {
-    max-width: 650px !important;
-}
-
-/*
-------------------------------------------------------------------------------------
 NAV
 ------------------------------------------------------------------------------------
 */
@@ -106,7 +96,7 @@ NAV
 }
 
 .nav-link {
-    font-family: serif;
+    font-family: sans-serif;
     font-size: 1.25em;
 }
 
@@ -411,6 +401,28 @@ STEPS
     display: block;
     position: absolute;
     z-index: -1;
+}
+
+
+/*
+------------------------------------------------------------------------------------
+SHOW 1 NOUVELLE
+------------------------------------------------------------------------------------
+*/
+
+.show-1-nouvelle {
+    max-width: 650px;
+    background-color: #fff;
+    padding: 2em;
+    margin-top: 2em;
+    margin-bottom: 3em;
+    border-radius: 0.25em;
+    border: 2px solid #66bc90;
+}
+
+.show-1-nouvelle p {
+    font-size: 1.25em !important;
+    line-height: 1.5em;
 }
 
 /*
