@@ -7,7 +7,10 @@ HTML, BODY
 body {
     margin: 0 !important;
     padding: 0;
+    background-image: url("../images/fond-eau.jpg");
+    background-size: 100% auto;
 }
+
 
 body, p, ol, ul, td {
     font-family: serif !important;
@@ -79,6 +82,16 @@ a > img {
 
 /*
 ------------------------------------------------------------------------------------
+LAYOUT
+------------------------------------------------------------------------------------
+*/
+
+.container.small {
+    max-width: 650px !important;
+}
+
+/*
+------------------------------------------------------------------------------------
 NAV
 ------------------------------------------------------------------------------------
 */
@@ -118,8 +131,8 @@ a.img-thumbnail {
 
 .mgl-thumbnail-sizer {
     display: block;
-    width: 6em;
-    height: 6em;
+    width: 5em;
+    height: 5em;
     overflow: hidden;
 }
 
@@ -180,10 +193,44 @@ OVERIDE TIMELINE
 ------------------------------------------------------------------------------------
 */
 
+.switch-timeline {
+    color: #fff;
+}
+
+/* -- vertical - DEBUT -- */
+
+#timeline-display-vertical .timeline__wrap {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* -- vertical - FIN -- */
+
 /* -- horizontal - DEBUT -- */
+
+.timeline--horizontal {
+    padding: 1em 0;
+}
 
 #timeline-display-horizontal .timeline__item {
     width: 320px !important;
+}
+
+#timeline-display-horizontal .timeline__item.timeline__item--top {
+    padding-top: 1em !important;
+}
+
+#timeline-display-horizontal .timeline__item:not(:first-child) {
+    margin-left: -100px;
+}
+
+#timeline-display-horizontal .timeline__item:first-child {
+    margin-left: 4em;
+}
+
+#timeline-display-horizontal .timeline__item:last-child {
+    margin-right: 4em;
 }
 
 #timeline-display-horizontal .timeline__item--top .timeline__content::before {
@@ -215,25 +262,48 @@ OVERIDE TIMELINE
     background-color: #2e7475 !important;
 }
 
+.timeline .card-img-top {
+    width: 100% !important;
+}
+
+.timeline .card-header {
+    background-color: #c1d566;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #2e7375;
+    font-size: 1.5em;
+    padding: 0.5em;
+    border-bottom: none !important;
+}
+
 .timeline .card-body > * {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
 
-.timeline .card-img-top {
-    width: 100% !important;
+.card-body > h5 {
+    margin-top: 0 !important;
 }
 
 .timeline__content p.card-date {
-    background-color: #2e7475;
+    background-color: #c1d566;
     padding: 0.125em 0.5em;
-    color: #fff;
+    color: #2e7375;
     border-radius: 1em;
     position: absolute;
     top: 0;
-    left: 1em;
+    right: calc(50% + 2em);
     margin: -0.75em 0 0 0;
+    font-weight: bold;
+    font-size: 1.5em !important;
+}
 
+#timeline-display-horizontal .timeline__content p.card-date {
+    right: calc(50% + 2em);
+}
+
+#timeline-display-vertical .timeline__content p.card-date {
+    left: 1em;
 }
 
 .mgl-video-thumbnail {
@@ -255,6 +325,11 @@ OVERIDE TIMELINE
 
 .mgl-play > img {
     width: 100%;
+}
+
+.card .read-more {
+    position: absolute;
+    margin-top: -0.25em !important;
 }
 
 /*

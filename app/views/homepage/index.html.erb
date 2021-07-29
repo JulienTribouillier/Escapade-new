@@ -5,7 +5,7 @@
       <%= image_tag 'escapade_lEscapade.png', :alt => 'l\'escapade' %>
     </h1>
     <% if device == "desktop" %>
-      <div class="mgl-big-screens-only">
+      <div class="mgl-big-screens-only class="switch-timeline">
         <span>Frise horizontale</span>
         <div class="form-check form-switch" style="display: inline-block;">
           <input class="form-check-input" type="checkbox" id="check" onclick="changeDisplay()">
@@ -30,20 +30,19 @@
           <% @posts.order("created_at").reverse.each do |post| %>
             <div class="timeline__item">
               <div class="timeline__content">
-                <% if post.header.present? %>
-                <div class="card-header">
-                <%= post.header %>
-                </div>
-                  <% end %>
                 <%if post.important? %>
                   <div class="card text-white bg-primary">
                 <%else %>
                   <div class="card">
                 <% end %>
-                <p><% if post.images.attached? %>
+                <% if post.images.attached? %>
                     <%= image_tag post.images.last, :class => "card-img-top", :style => "width: 320px"%>
                   <% end %>
-                </p>
+                <% if post.header.present? %>
+                  <div class="card-header">
+                  <%= post.header %>
+                  </div>
+                <% end %>
                 <div class="card-body">
                   <p class="card-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
                   <div class="card-title"><%= post.title %></div>
@@ -59,9 +58,9 @@
                       <% end %>
                   <% end %>
                   </ul>
-                </div>
-                <div>
-                  <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
+                  <div class="read-more">
+                    <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
+                  </div>
                 </div>
                 </div>
               </div>
@@ -83,20 +82,19 @@
           <% @posts.each do |post| %>
             <div class="timeline__item">
               <div class="timeline__content">
-                <% if post.header.present? %>
-                  <div class="card-header">
-                    <%= post.header %>
-                  </div>
-                <% end %>
                 <%if post.important? %>
                   <div class="card text-white bg-primary">
                     <%else %>
                   <div class="card">
                     <% end %>
-                  <p><% if post.images.attached? %>
+                    <% if post.images.attached? %>
                       <%= image_tag post.images.last, :class => "card-img-top"%>
                     <% end %>
-                  </p>
+                  <% if post.header.present? %>
+                    <div class="card-header">
+                    <%= post.header %>
+                    </div>
+                  <% end %>
                   <div class="card-body">
                     <p class="card-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
                     <h5><%= post.title %></h5>
@@ -112,10 +110,10 @@
                         <% end %>
                     <% end %>
                     </ul>
+                    <div class="read-more">
+                      <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
+                    </div>
                   </div>
-                <div>
-                  <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
-                </div>
                 </div>
               </div>
             </div>

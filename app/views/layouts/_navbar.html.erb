@@ -64,14 +64,7 @@
           <li class="nav-item">
             <%= link_to "Administrer les nouvelles", admin_posts_path , :class => "nav-link"%>
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Administrer les nouvelles", new_user_session_path , :class => "nav-link"%>
-          </li>
         <% end %>
-        <!--        <li class="nav-item">-->
-        <%#= link_to "Se connecter", new_user_session_path , :class => "nav-link"%>
-        <!--        </li>-->
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete , :class => "nav-link"%>
