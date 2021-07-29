@@ -250,13 +250,13 @@
     &--prev {
         left: 0;
         &::before {
-            background-image: url('../images/arrow-left.svg');
+            background-image: url(asset_path('arrow-left.svg'));
         }
     }
     &--next {
         right: 0;
         &::before {
-            background-image: url('../images/arrow-right.svg');
+            background-image: url(asset_path('arrow-right.svg'));
         }
     }
 }
