@@ -36,7 +36,7 @@
                   <div class="card">
                 <% end %>
                 <% if post.images.attached? %>
-                    <%= image_tag post.images.last, :class => "card-img-top", :style => "width: 320px"%>
+                    <%= image_tag post.images.last.variant(quality: 20), :class => "card-img-top", :style => "width: 320px"%>
                   <% end %>
                 <% if post.header.present? %>
                   <div class="card-header">
@@ -51,8 +51,8 @@
                     <ul class="mgl-galery">
                       <% post.images.each do |img|%>
                         <li>
-                          <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
-                            <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+                          <%=link_to url_for(img.variant(quality: 20)) , :class => "img-thumbnail", :target => "_blank" do%>
+                            <span class="mgl-thumbnail-sizer"><%= image_tag img.variant(quality: 10) %></span>
                           <% end %>
                         </li>
                       <% end %>
@@ -88,7 +88,7 @@
                   <div class="card">
                     <% end %>
                     <% if post.images.attached? %>
-                      <%= image_tag post.images.last, :class => "card-img-top"%>
+                      <%= image_tag post.images.last.variant(quality: 20), :class => "card-img-top"%>
                     <% end %>
                   <% if post.header.present? %>
                     <div class="card-header">
@@ -103,8 +103,8 @@
                       <ul class="mgl-galery">
                         <% post.images.each do |img|%>
                           <li>
-                            <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
-                              <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+                            <%=link_to url_for(img.variant(quality: 20)) , :class => "img-thumbnail", :target => "_blank" do%>
+                              <span class="mgl-thumbnail-sizer"><%= image_tag img.variant(quality: 10) %></span>
                             <% end %>
                           </li>
                         <% end %>
