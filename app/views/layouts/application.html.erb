@@ -12,7 +12,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'timeline' %>
   </head>
-  <body style="background-image: url('fond-eau.jpg')">
+  <body style="background-image: url(<%= asset_path 'fond-eau.jpg' %>)">
+
     <%= render 'layouts/navbar' %>
     
     <%= yield %>
