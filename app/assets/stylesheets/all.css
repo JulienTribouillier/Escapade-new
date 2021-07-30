@@ -200,7 +200,7 @@ OVERIDE TIMELINE
 /* -- horizontal - DEBUT -- */
 
 .timeline--horizontal {
-    padding: 1em 0;
+    padding: 1em 0 !important;
 }
 
 #timeline-display-horizontal .timeline__item {
