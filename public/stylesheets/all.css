@@ -110,7 +110,7 @@ THUMBNAILS
 
 .mgl-thumbnail-sizer > img {
     height: 100%;
-    left: 0;
+    left: -25%;
     position: relative;
 }
 
