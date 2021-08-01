@@ -36,7 +36,7 @@
                   <div class="card">
                 <% end %>
                 <% if post.images.attached? %>
-                    <%= image_tag post.images.last.variant(resize_to_fill: [320, 200]), :class => "card-img-top", :style => "width: 320px"%>
+                    <%= image_tag post.images.last.variant(quality: 80, resize_to_fill: [320, 200]), :class => "card-img-top", :style => "width: 320px"%>
                   <% end %>
                 <% if post.header.present? %>
                   <div class="card-header">
@@ -45,14 +45,14 @@
                 <% end %>
                 <div class="card-body">
                   <p class="card-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
-                  <div class="card-title"><%= post.title %></div>
+                  <h5><%= post.title %></h5>
                   <p><%= post.content %></p>
                   <% if post.images.attached? && post.images.count > 1 %>
                     <ul class="mgl-galery">
                       <% post.images.each do |img|%>
                         <li>
-                          <%=link_to url_for(img.variant(quality: 80, resize_to_limit: [750, 750])) , :class => "img-thumbnail", :target => "_blank" do%>
-                            <span class="mgl-thumbnail-sizer"><%= image_tag img.variant(quality: 60, resize_to_fill: [100, 100]) %></span>
+                          <%=link_to url_for(img.variant(quality: 60, resize_to_limit: [750, 750])) , :class => "img-thumbnail", :target => "_blank" do%>
+                            <span class="mgl-thumbnail-sizer"><%= image_tag img.variant(quality: 20, resize_to_fill: [100, 100]) %></span>
                           <% end %>
                         </li>
                       <% end %>
@@ -88,7 +88,7 @@
                   <div class="card">
                     <% end %>
                     <% if post.images.attached? %>
-                      <%= image_tag post.images.last.variant(resize_to_fill: [320, 200]), :class => "card-img-top"%>
+                      <%= image_tag post.images.last.variant(quality: 80, resize_to_fill: [320, 200]), :class => "card-img-top"%>
 <!--                  faire un crop-->
                     <% end %>
                   <% if post.header.present? %>
@@ -104,7 +104,7 @@
                       <ul class="mgl-galery">
                         <% post.images.each do |img|%>
                           <li>
-                            <%=link_to url_for(img.variant(quality: 80, resize_to_limit: [750, 750])) , :class => "img-thumbnail", :target => "_blank" do%>
+                            <%=link_to url_for(img.variant(quality: 60, resize_to_limit: [750, 750])) , :class => "img-thumbnail", :target => "_blank" do%>
                               <span class="mgl-thumbnail-sizer"><%= image_tag img.variant(quality: 20, resize_to_fill: [100, 100]) %></span>
 <!--                              faire un crop-->
                             <% end %>
