@@ -99,7 +99,7 @@
                   <div class="card-body">
                     <p class="card-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
                     <h5><%= post.title %></h5>
-                    <p><%= truncate(post.content, length: 120, escape: false ) %></p>
+                    <%= truncate((post.content.to_plain_text), length: 120, :escape => false) %>
                     <% if post.images.attached? && post.images.count > 1 %>
                       <ul class="mgl-galery">
                         <% post.images.each do |img|%>

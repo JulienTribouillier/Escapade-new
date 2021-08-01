@@ -3,6 +3,7 @@
 class Post < ApplicationRecord
 
   has_many_attached :images
+  has_rich_text :content
 
   PENDING = 'pending'
   REJECTED = 'rejected'
