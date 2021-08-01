@@ -5,11 +5,11 @@
       <%= image_tag 'escapade_lEscapade.png', :alt => 'l\'escapade' %>
     </h1>
     <% if device == "desktop" %>
-      <div class="mgl-big-screens-only">
-        <span>Frise horizontale</span>
+      <div class="mgl-big-screens-only class="switch-timeline">
+        <span style="color: white;">Frise horizontale</span>
         <div class="form-check form-switch" style="display: inline-block;">
           <input class="form-check-input" type="checkbox" id="check" onclick="changeDisplay()">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Frise verticale</label>
+          <label class="form-check-label" for="flexSwitchCheckDefault" style="color: white;">Frise verticale</label>
         </div>
       </div>
     <% end %>
@@ -17,7 +17,7 @@
 </div>
 
 
-<div class="m-4" id="hide" style="opacity: 0.5;">
+<div id="hide" style="opacity: 0.5;">
   <!--vue verticale-->
   <% if device == "tablet" || device == "mobile" %>
   <div id="timeline-display-vertical" style="display:block">
@@ -30,20 +30,19 @@
           <% @posts.order("created_at").reverse.each do |post| %>
             <div class="timeline__item">
               <div class="timeline__content">
-                <% if post.header.present? %>
-                <div class="card-header">
-                <%= post.header %>
-                </div>
-                  <% end %>
                 <%if post.important? %>
                   <div class="card text-white bg-primary">
                 <%else %>
                   <div class="card">
                 <% end %>
-                <p><% if post.images.attached? %>
-                    <%= image_tag post.images.last, :class => "card-img-top", :style => "width: 320px"%>
+                <% if post.images.attached? %>
+                    <%= image_tag post.images.last.variant(resize_to_fill: [320, 200]), :class => "card-img-top", :style => "width: 320px"%>
                   <% end %>
-                </p>
+                <% if post.header.present? %>
+                  <div class="card-header">
+                  <%= post.header %>
+                  </div>
+                <% end %>
                 <div class="card-body">
                   <p class="card-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
                   <div class="card-title"><%= post.title %></div>
@@ -52,16 +51,16 @@
                     <ul class="mgl-galery">
                       <% post.images.each do |img|%>
                         <li>
-                          <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
-                            <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+                          <%=link_to url_for(img.variant(quality: 80, resize_to_limit: [750, 750])) , :class => "img-thumbnail", :target => "_blank" do%>
+                            <span class="mgl-thumbnail-sizer"><%= image_tag img.variant(quality: 60, resize_to_fill: [100, 100]) %></span>
                           <% end %>
                         </li>
                       <% end %>
                   <% end %>
                   </ul>
-                </div>
-                <div>
-                  <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
+                  <div class="read-more">
+                    <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
+                  </div>
                 </div>
                 </div>
               </div>
@@ -83,39 +82,40 @@
           <% @posts.each do |post| %>
             <div class="timeline__item">
               <div class="timeline__content">
-                <% if post.header.present? %>
-                  <div class="card-header">
-                    <%= post.header %>
-                  </div>
-                <% end %>
                 <%if post.important? %>
                   <div class="card text-white bg-primary">
                     <%else %>
                   <div class="card">
                     <% end %>
-                  <p><% if post.images.attached? %>
-                      <%= image_tag post.images.last, :class => "card-img-top"%>
+                    <% if post.images.attached? %>
+                      <%= image_tag post.images.last.variant(resize_to_fill: [320, 200]), :class => "card-img-top"%>
+<!--                  faire un crop-->
                     <% end %>
-                  </p>
+                  <% if post.header.present? %>
+                    <div class="card-header">
+                    <%= post.header %>
+                    </div>
+                  <% end %>
                   <div class="card-body">
                     <p class="card-date"><%= post.created_at.strftime("%d/%m/%Y") %></p>
                     <h5><%= post.title %></h5>
-                    <p><%= truncate(post.content, length: 120, escape: false ) %></p>
+                    <%= truncate((post.content.to_plain_text), length: 120, :escape => false) %>
                     <% if post.images.attached? && post.images.count > 1 %>
                       <ul class="mgl-galery">
                         <% post.images.each do |img|%>
                           <li>
-                            <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
-                              <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+                            <%=link_to url_for(img.variant(quality: 80, resize_to_limit: [750, 750])) , :class => "img-thumbnail", :target => "_blank" do%>
+                              <span class="mgl-thumbnail-sizer"><%= image_tag img.variant(quality: 20, resize_to_fill: [100, 100]) %></span>
+<!--                              faire un crop-->
                             <% end %>
                           </li>
                         <% end %>
                     <% end %>
                     </ul>
+                    <div class="read-more">
+                      <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
+                    </div>
                   </div>
-                <div>
-                  <%= link_to "Lire la suite", post_path(post), :class => "btn btn-primary", :target => "_blank" %>
-                </div>
                 </div>
               </div>
             </div>

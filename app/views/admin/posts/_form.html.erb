@@ -1,3 +1,4 @@
+<div class="container small show-1-nouvelle">
 <%= form_with(model: [:admin, @post], local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -17,19 +18,24 @@
   </div>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :titre %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.label :contenu %>
+    <%= form.rich_text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_de_creation %>
+    <%= form.date_field :created_at %>
   </div>
 
 
 
     <% if @post.images.present? %>
-      <p>Currently registered images (check what you want to delete)</p>
+      <p>Images actuellement enregistrées (cochez la ou les images que vous souhaitez effacer)</p>
       <% @post.images.each do |image| %>
         <%= form.check_box :image_ids, {multiple: true}, image.id, false %>
         <%= image_tag image, size:"100x100" %> <br>
@@ -40,16 +46,15 @@
 
 
   <div class="field">
-    <%= form.label "Status du contenu" %>
-    <%= form.select(:status, options_for_select([['pending'], ['rejected'], ['validated']],@post.status)) %>
+    <p> Status du contenu : <%= form.select(:status, options_for_select([['pending'], ['rejected'], ['validated']],@post.status)) %> </p>
   </div>
 
   <div class="field">
-    <%= form.label "Mettre en avant" %>
-    <%= form.check_box :important %>
+    <p>Mettre en avant ? (cochez la case) <%= form.check_box :important %></p>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>

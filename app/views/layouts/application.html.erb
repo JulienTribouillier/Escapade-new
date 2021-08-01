@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <title>Margoulin</title>
+    <title>🐸 L'Escapade</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +12,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'timeline' %>
   </head>
-  <body>
+  <body style="background-image: url(<%= asset_path 'fond-eau.jpg' %>)">
+
     <%= render 'layouts/navbar' %>
     
     <%= yield %>
