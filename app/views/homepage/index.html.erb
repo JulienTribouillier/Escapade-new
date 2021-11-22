@@ -111,9 +111,18 @@
                     <% if post.images.attached? && post.images.count > 1 %>
                       <ul class="mgl-galery">
                         <% post.images.each do |img|%>
+                          <%  if img.blob.variable?  %>
                           <li>
                             <%=link_to url_for(img.variant(quality: 60, resize_to_limit: [750, 750])) , :class => "img-thumbnail", :target => "_blank" do%>
                               <span class="mgl-thumbnail-sizer"><%= image_tag img.variant(quality: 20, resize_to_fill: [100, 100]) %></span>
+                              <% if img.blob.variable? == false %>
+                                <li>
+                                  <%=link_to url_for(img) , :class => "img-thumbnail", :target => "_blank" do%>
+                                    <span class="mgl-thumbnail-sizer"><%= image_tag img %></span>
+                                    <% end %>
+                                    <% end %>
+                                    <% end %>
+
 <!--                              faire un crop-->
                             <% end %>
                           </li>
