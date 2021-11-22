@@ -10,9 +10,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
+tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/bin/*
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
@@ -38,3 +39,9 @@ yarn-debug.log*
 .env
 /config/secret.yml
 /config/credentials.yml.enc
+tmp/cache/bootsnap/*
+build_info/
+cache/
+extensions/
+gems/
+specifications/
